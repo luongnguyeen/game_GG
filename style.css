@@ -1,0 +1,107 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #0a1128; /* Màu nền xanh đậm như bầu trời đêm */
+    color: #f0f0f0; /* Màu chữ trắng nhạt */
+    overflow: hidden; /* Ẩn thanh cuộn ngang/dọc nếu có, để hiệu ứng sao băng không bị cắt */
+    position: relative; /* Để định vị tuyệt đối cho hiệu ứng sao băng */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh; /* Chiếm 80% chiều cao viewport */
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+.buttons {
+    display: flex;
+    gap: 20px; /* Khoảng cách giữa 2 nút */
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #0a1128; /* Màu chữ nút */
+}
+
+#yes-button {
+    background-color: #4CAF50; /* Màu xanh lá cây cho nút "Đồng ý" */
+    color: white;
+}
+
+#no-button {
+    background-color: #f44336; /* Màu đỏ cho nút "Không đồng ý" */
+    position: relative; /* Để di chuyển nút bằng JavaScript */
+}
+
+#next-page-button {
+    background-color: #008CBA; /* Màu xanh dương cho nút chuyển trang */
+    color: white;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Màu nền footer hơi trong suốt */
+}
+
+/* CSS cho hiệu ứng sao băng */
+#star-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Cho phép click xuyên qua vùng chứa sao băng */
+}
+
+.star {
+    position: absolute;
+    background-color: white; /* Màu trắng cho sao băng */
+    width: 2px; /* Độ rộng sao băng */
+    height: 2px; /* Độ cao sao băng */
+    border-radius: 50%; /* Hình tròn cho sao băng */
+    opacity: 0.8; /* Độ trong suốt của sao băng */
+    animation: fallingStar linear infinite; /* Animation rơi cho sao băng */
+}
+
+@keyframes fallingStar {
+    0% {
+        transform: translateY(0) translateX(0) rotate(-45deg); /* Vị trí bắt đầu và góc nghiêng */
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(100vh) translateX(-100vw) rotate(-45deg); /* Vị trí kết thúc và góc nghiêng */
+        opacity: 0;
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) { /* CSS cho màn hình nhỏ hơn 768px (ví dụ: điện thoại) */
+    h1 {
+        font-size: 1.5em;
+    }
+    .buttons {
+        flex-direction: column; /* Xếp nút dọc trên màn hình nhỏ */
+        gap: 15px;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+}
